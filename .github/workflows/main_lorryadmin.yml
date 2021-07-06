@@ -20,13 +20,12 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: '5.0.x'
+        include-prerelease: true
 
     - name: Build with dotnet
       run: dotnet build --configuration Release
-      working-directory: ./lorrylogadmin      
 
     - name: dotnet publish
-      working-directory: ./lorrylogadmin    
       run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
 
     - name: Upload artifact for deployment job
@@ -54,5 +53,5 @@ jobs:
       with:
         app-name: 'lorryadmin'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_1538a531dbcc4d7782d71767e45a1009 }}
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_c970b1502b004e58acc2ebac57cd3669 }}
         package: .
